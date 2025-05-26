@@ -25,8 +25,6 @@
 - 树 (Tree)：二叉树 / 平衡树(AVL, 红黑树) / B树
 - 堆 (Heap)
 - 图 (Graph)
-- 并查集 (Disjoint Set Union)
-- 字典树 (Trie)
 
 ### 算法
 
@@ -37,14 +35,15 @@
 - 回溯 (Backtracking)
 - 分治 (Divide & Conquer)
 - 图论：最短路径 (Dijkstra, Bellman-Ford)、最小生成树 (Kruskal, Prim) 等
-- 字符串匹配：KMP, Rabin-Karp
 
 ## 🚀 如何使用
 
 1. 克隆仓库：
+
    ```bash
    git clone https://github.com/Hasson827/DSA_var_language.git
    ```
+
 2. 进入对应语言目录，查看各算法/数据结构实现及示例。
 3. 根据需求自行编译（C/C++）或运行（Python）。
 
