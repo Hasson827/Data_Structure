@@ -100,7 +100,7 @@ String& String::erase(int pos, int num){
     if(num < 0) throw badSize();
     if (num > curLength - pos)
         num = curLength - pos; // 限制num的大小
-    for(int i = pos; i < curLength - num; i++)
+    for(int i = pos; i <= curLength - num; i++)
         data[i] = data[i + num]; // 将pos位置之后的字符前移num个位置
     curLength -= num; // 更新当前串长度
     return *this;
@@ -169,7 +169,7 @@ int String::bfFind(const String& s, int pos) const {
             j = 0; // j回到s的起始位置
         }
     }
-    if(i >= s.curLength) return (i - s.curLength); // 如果j遍历完s，返回匹配的起始位置
+    if(j >= s.curLength) return (i - s.curLength); // 如果j遍历完s，返回匹配的起始位置
     return -1; // 如果没有找到匹配，返回-1
 }
 
@@ -191,6 +191,7 @@ int String::kmpFind(const String& t, int pos){
 
 void String::getNext(const String& t, int *next){
     int i = 0, j = -1;
+    next[0] = -1; // 初始化next数组
     while(i < t.curLength - 1){
         if((j == -1) || (t[i] == t[j])){
             ++i, ++j;
@@ -209,4 +210,96 @@ void String::getNextVal(const String& t, int *nextVal){
             else nextVal[i] = nextVal[j];
         }else j = nextVal[j];
     }
+}
+
+int main(){
+    cout << "=== String Class Test Suite ===" << endl;
+    
+    // Test 1: Constructors
+    cout << "\n1. Testing Constructors:" << endl;
+    String s1("Hello");
+    String s2(s1);
+    String s3("");
+    cout << "s1: " << s1 << " (size: " << s1.size() << ")" << endl;
+    cout << "s2 (copy): " << s2 << " (size: " << s2.size() << ")" << endl;
+    cout << "s3 (empty): " << s3 << " (empty: " << s3.empty() << ")" << endl;
+    
+    // Test 2: Basic Functions
+    cout << "\n2. Testing Basic Functions:" << endl;
+    cout << "s1 capacity: " << s1.capacity() << endl;
+    cout << "s1 as char*: " << s1.toCharStr() << endl;
+    
+    // Test 3: Comparison
+    cout << "\n3. Testing Comparison:" << endl;
+    String s4("Hello");
+    String s5("World");
+    cout << "s1 == s4: " << (s1 == s4) << endl;
+    cout << "s1 compare s5: " << s1.compare(s5) << endl;
+    
+    // Test 4: Substring
+    cout << "\n4. Testing Substring:" << endl;
+    String sub = s1.subStr(1, 3);
+    cout << "s1.subStr(1,3): " << sub << endl;
+    
+    // Test 5: Insert and Erase
+    cout << "\n5. Testing Insert and Erase:" << endl;
+    String s6("Hello");
+    s6.insert(5, String(" World"));
+    cout << "After insert: " << s6 << endl;
+    s6.erase(5, 5);
+    cout << "After erase: " << s6 << endl;
+    
+    // Test 6: Operators
+    cout << "\n6. Testing Operators:" << endl;
+    String s7("Hi");
+    String s8(" there");
+    s7 = s7 + s8;
+    cout << "Concatenation: " << s7 << endl;
+    cout << "s7[0]: " << s7[0] << endl;
+    
+    // Test 7: Pattern Matching
+    cout << "\n7. Testing Pattern Matching:" << endl;
+    String text("abcabcabcabc");
+    String pattern("abcab");
+    cout << "Text: " << text << endl;
+    cout << "Pattern: " << pattern << endl;
+    cout << "BF Find: " << text.bfFind(pattern) << endl;
+    cout << "KMP Find: " << text.kmpFind(pattern) << endl;
+    
+    // Test 8: Next Array
+    cout << "\n8. Testing Next Array:" << endl;
+    int* next = new int[pattern.size()];
+    text.getNext(pattern, next);
+    cout << "Next array for pattern '" << pattern << "': ";
+    for(int i = 0; i < pattern.size(); i++) {
+        cout << next[i] << " ";
+    }
+    cout << endl;
+    delete[] next;
+    
+    // Test 9: Exception Handling
+    cout << "\n9. Testing Exception Handling:" << endl;
+    try {
+        s1[10]; // Should throw outOfRange
+    } catch(const outOfRange& e) {
+        cout << "Caught exception: " << e.what();
+    }
+    
+    try {
+        s1.subStr(0, -1); // Should throw badSize
+    } catch(const badSize& e) {
+        cout << "Caught exception: " << e.what();
+    }
+    
+    // Test 10: Complex Pattern
+    cout << "\n10. Testing Complex Pattern:" << endl;
+    String complexText("ababcababa");
+    String complexPattern("ababa");
+    cout << "Complex text: " << complexText << endl;
+    cout << "Complex pattern: " << complexPattern << endl;
+    cout << "KMP Find: " << complexText.kmpFind(complexPattern) << endl;
+    
+    cout << "\n=== All Tests Completed ===" << endl;
+    
+    return 0;
 }
