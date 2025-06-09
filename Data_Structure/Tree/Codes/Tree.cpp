@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue> // STL队列
 using namespace std;
 
 
@@ -11,7 +12,6 @@ public:
     virtual int height() const = 0; // 树的高度
     virtual int size() const = 0; // 树的节点数
     virtual void preOrderTraverse() const = 0; // 前序遍历
-    virtual void inOrderTraverse() const = 0; // 中序遍历
     virtual void postOrderTraverse() const = 0; // 后序遍历
     virtual void levelOrderTraverse() const = 0; // 层次遍历
     virtual ~Tree() {}; // 虚析构函数
@@ -132,7 +132,7 @@ template <class elemType>
 int childSiblingTree<elemType>::height(Node* t) const {
     if (t == nullptr) return 0; // 空节点高度为0
     else{
-        int lh = height(t->firstChilde), rh = height(t->nextSibling) // 计算子节点和兄弟节点的高度
+        int lh = height(t->firstChild), rh = height(t->nextSibling); // 计算子节点和兄弟节点的高度
         return (1+lh > rh ? 1+lh : rh); // 返回较大高度
     }
 }
@@ -148,4 +148,25 @@ void childSiblingTree<elemType>::preOrderCreate(elemType flag, Node* &t) {
     } else {
         t = nullptr; // 如果输入值为标志值，则设置为nullptr
     }
+}
+
+int main(){
+    childSiblingTree<int> tree; // 创建树对象
+    cout << "请输入前序遍历的节点值，以-1结束：" << endl;
+    tree.preOrderCreate(-1); // 前序创建树，-1为结束标志
+    cout << "前序遍历结果：" << endl;
+    tree.preOrderTraverse(); // 前序遍历
+    cout << endl;
+
+    cout << "后序遍历结果：" << endl;
+    tree.postOrderTraverse(); // 后序遍历
+    cout << endl;
+
+    cout << "层次遍历结果：" << endl;
+    tree.levelOrderTraverse(); // 层次遍历
+    cout << endl;
+
+    cout << "树的高度：" << tree.height() << endl; // 树的高度
+    cout << "树的节点数：" << tree.size() << endl; // 树的节点数
+    return 0;
 }
