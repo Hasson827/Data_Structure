@@ -1,61 +1,35 @@
-# DSA_var_language: 多语言数据结构与算法实现
+# 数据结构学习与实践
 
-本仓库旨在使用 Python、C 和 C++ 三种主流编程语言，实现并演示各种常见的数据结构和算法，帮助学习者对比不同语言的特性与性能。
+本仓库主要用于记录数据结构课程相关的学习笔记、算法实现以及练习题目。
 
-## ✨ 仓库目标
+## 仓库内容
 
-- **多语言对比**：相同算法与数据结构在不同语言下的实现差异。
-- **知识沉淀**：清晰、易读、可复用的源码示例。
-- **考试突击利器**：涵盖常见算法与数据结构，助力考试准备。
+- **学习笔记**: 包含各种基本数据结构（如数组、链表、栈、队列、树、图等）的理论知识、特性分析和复杂度分析。
+- **代码实现**: 提供常用数据结构和相关算法的多种编程语言（例如 C++, Python）的实现示例。
+- **练习与题解**: 收集整理数据结构相关的编程练习题和对应的解题思路与代码。
 
-## 🛠️ 主要语言
+## 如何使用
 
-- Python
-- C
-- C++
-
-## 📚 内容概览
-
-### 数据结构
-
-- 数组 (Array)
-- 线性表 (Linear List)：顺序/单向 / 双向 / 循环
-- 栈与队列 (Stack & Queue)
-- 哈希表 (Hash Table)
-- 树 (Tree)：二叉树 / 平衡树(AVL, 红黑树) / B树
-- 堆 (Heap)
-- 图 (Graph)
-
-### 算法
-
-- 排序：冒泡、插入、选择、归并、快速、堆、计数、桶、基数
-- 搜索：线性、二分、DFS、BFS
-- 动态规划 (DP)
-- 贪心 (Greedy)
-- 回溯 (Backtracking)
-- 分治 (Divide & Conquer)
-- 图论：最短路径 (Dijkstra, Bellman-Ford)、最小生成树 (Kruskal, Prim) 等
-
-## 🚀 如何使用
-
-1. 克隆仓库：
+1. 克隆本仓库到您的本地计算机：
 
    ```bash
-   git clone https://github.com/Hasson827/DSA_var_language.git
+    git clone https://github.com/Hasson827/Data_Structure.git
    ```
 
-2. 进入对应语言目录，查看各算法/数据结构实现及示例。
-3. 根据需求自行编译（C/C++）或运行（Python）。
+2. 浏览各个文件夹，查阅笔记或运行代码示例。具体的编译和运行方式请参考各代码文件或子目录下的说明。
 
-## 🤝 贡献指南
+## 贡献指南
 
-欢迎贡献与问题反馈：
+欢迎对本项目做出贡献！如果您有任何改进建议、发现错误或希望添加新的内容，请遵循以下步骤：
 
-1. Fork 本仓库
-2. 新建分支：`git checkout -b feature/YourFeature`
-3. 提交修改：`git commit -m "Add your feature"`
-4. 推送分支并发起 Pull Request
+1. Fork 本仓库。
+2. 创建您的特性分支 (`git checkout -b feature/YourAmazingFeature`)。
+3. 提交您的更改 (`git commit -m 'Add some AmazingFeature'`)。
+4. 将更改推送到您的分支 (`git push origin feature/YourAmazingFeature`)。
+5. 提交一个 Pull Request。
 
-## 📄 LICENSE
+我们感谢所有贡献者的努力！
 
-本项目使用 MIT 许可证，详见 [LICENSE](LICENSE) 文件。
+## 许可证
+
+本项目采用 MIT 许可证。详细信息请参阅 [LICENSE](LICENSE) 文件。
