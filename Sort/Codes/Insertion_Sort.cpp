@@ -30,3 +30,17 @@ void binaryInsertSort(Type R[], int size){
         R[low] = temp; // 插入R[pos]到正确位置
     }
 }
+
+template <class Type>
+void shellSort(Type R[], int size){
+    int gap, pos, j;
+    Type temp;
+    for(gap = size / 2; gap > 0; gap /= 2){
+        for(pos = gap, pos < size; pos++){
+            temp = R[pos]; // 记录待插入的元素
+            for(j = pos - gap; j >= 0 && R[j] > temp; j -= gap) // 从后往前查找插入位置
+                R[j + gap] = R[j]; // 将R[j]后移
+            R[j + gap] = temp; // 插入R[pos]到正确位置
+        }
+    }
+}
