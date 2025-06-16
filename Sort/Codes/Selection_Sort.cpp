@@ -34,7 +34,7 @@ void siftDown(Type R[], int pos, int size){
 }
 
 template <class Type>
-void heapSor(Type R[], int size){
+void heapSort(Type R[], int size){
     for(int i = size / 2 - 1; i >= 0; i--) // 建立初始堆
         siftDown(R, i, size);
     for(int i = size - 1; i > 0; i--){
